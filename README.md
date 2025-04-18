@@ -4,8 +4,12 @@ This repository contains my practice codes while learning Java fundamentals.
 
 ## Topics Covered
 - ✅ Variables & Data Types
-- ✅ Loops & Conditionals
 - ✅ Arrays
-- ✅ Functions
+- ✅ Sorting
+- ✅ 2D Arrays (Matrix)
+- ✅ Bit Manipulation
+- ✅ Strings
+- ✅ Patterns
+- ✅ OOPs
 
 Feel free to explore and learn with me!
