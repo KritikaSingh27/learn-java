@@ -1,4 +1,4 @@
-import java.util.*;
+    import java.util.*;
 public class Arrays{
     public static void printArray(int numbers[]){
         for(int i=0; i<numbers.length; i++){
