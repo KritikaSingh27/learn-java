@@ -99,7 +99,7 @@ public class Recursion{
         return totalWays;
     }
 
-    public static int removeDuplicates(int idx,string str, StringBuilder newStr, boolean map[]){
+    public static void removeDuplicates(int idx,String str, StringBuilder newStr, boolean map[]){
         if(idx == str.length()){
             System.out.println(newStr);
             return;
@@ -127,7 +127,7 @@ public class Recursion{
         System.out.print("9. To find X to the power n \n");
         System.out.print("10. To find X to the power n by a optimised method \n");
         System.out.print("11. Tiling problem \n");
-        System.out.pirnt("12. Remove duplicate in a string \n");    
+        System.out.print("12. Remove duplicates from a string \n");
         //for the string with no special characters or capital letters (we can easily make an extended version for that)
 
         System.out.print("Which function do you want to perform : ");
@@ -214,7 +214,7 @@ public class Recursion{
         }
         else if(a==9){
             System.out.print("Enter X: ");
-            int x = Sc,nextInt();
+            int x = Sc.nextInt();
             System.out.print("Enter n: ");
             int n = Sc.nextInt();
             System.out.print(pow(x,n));
