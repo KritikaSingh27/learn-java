@@ -11,5 +11,6 @@ This repository contains my practice codes while learning Java fundamentals.
 - ✅ Strings
 - ✅ Patterns
 - ✅ OOPs
+- ✅ Recursion
 
 Feel free to explore and learn with me!
