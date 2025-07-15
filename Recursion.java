@@ -1,12 +1,21 @@
 import java.util.*;
 public class Recursion{
-    public static void printInc(int n){
+    public static void printInc(int n){     
         if(n==1){
             System.out.print(1);
             return;
         }
         printInc(n-1);
         System.out.print(n + " ");
+    }
+
+    public static void printDec(int n){
+        if(n==1){
+            System.out.print(n);
+            return;
+        }
+        System.out.print(n + " ");
+        printDec(n-1);
     }
 
     public static int fact(int n){
@@ -80,17 +89,46 @@ public class Recursion{
         return halfpowSq;
     }
 
+    public static int tilingWays(int n){
+        if(n==0||n==1){
+            return 1;
+        }
+        int fnm1 = tilingWays(n-1);    //vertical
+        int fnm2 = tilingWays(n-2);    //horizontal
+        int totalWays = fnm1+fnm2;
+        return totalWays;
+    }
+
+    public static int removeDuplicates(int idx,string str, StringBuilder newStr, boolean map[]){
+        if(idx == str.length()){
+            System.out.println(newStr);
+            return;
+        }
+        char currchar = str.charAt(idx);      //duplicate
+        if(map[currchar - 'a'] == true){
+            removeDuplicates(idx+1,str,newStr,map);     //newStr will not append
+        }
+        else{
+            map[currchar - 'a'] = true;
+            removeDuplicates(idx+1,str,newStr.append(currchar),map);
+        }
+    }
+
     public static void main(String args[]){
         Scanner Sc = new Scanner(System.in);
-        System.out.print("1. Print numbers form 1 to n \n");
-        System.out.print("2. Factorial of a Number \n");
-        System.out.print("3. Sum of first n natural numbers \n");
-        System.out.print("4. Find the nth Fibonacci number \n");
-        System.out.print("5. Check if the given array is sorted or not \n");
-        System.out.print("6. Find the index of the first occurence of the searched key \n");
-        System.out.print("7. Find the index of the last occurence of the searched key \n");
-        System.out.print("8. To find X to the power n \n");
-        System.out.print("9. To find X to the power n by a optimised method \n");
+        System.out.print("1. Print numbers form 1 to n in increasing order\n");
+        System.out.print("2. Print numbers form 1 to n in decreasing order\n");
+        System.out.print("3. Factorial of a Number \n");
+        System.out.print("4. Sum of first n natural numbers \n");
+        System.out.print("5. Find the nth Fibonacci number \n");
+        System.out.print("6. Check if the given array is sorted or not \n");
+        System.out.print("7. Find the index of the first occurence of the searched key \n");
+        System.out.print("8. Find the index of the last occurence of the searched key \n");
+        System.out.print("9. To find X to the power n \n");
+        System.out.print("10. To find X to the power n by a optimised method \n");
+        System.out.print("11. Tiling problem \n");
+        System.out.pirnt("12. Remove duplicate in a string \n");    
+        //for the string with no special characters or capital letters (we can easily make an extended version for that)
 
         System.out.print("Which function do you want to perform : ");
         int a = Sc.nextInt();
@@ -102,22 +140,27 @@ public class Recursion{
         else if(a==2){
             System.out.print("Enter n :");
             int n = Sc.nextInt();
+            printDec(n);
+        }
+        else if(a==3){
+            System.out.print("Enter n :");
+            int n = Sc.nextInt();
             int factorial= fact(n);
             System.out.print(factorial);
         }
-        else if(a==3){
+        else if(a==4){
             System.out.print("Enter n :");
             int n = Sc.nextInt();
             int sum = sum(n);
             System.out.print(sum);
         }
-        else if(a==4){
+        else if(a==5){
             System.out.print("Enter n :");
             int n = Sc.nextInt();
             int fibo = fib(n);
             System.out.print(fibo);
         }
-        else if(a==5){
+        else if(a==6){
             System.out.print("How many elements do you want to add in the Array: ");
             int n= Sc.nextInt();
             int numbers[] = new int[n];
@@ -133,7 +176,7 @@ public class Recursion{
                 System.out.print("The given array is not sorted");
             }
         }
-        else if(a==6){
+        else if(a==7){
             System.out.print("How many elements do you want to add in the Array: ");
             int n= Sc.nextInt();
             int numbers[] = new int[n];
@@ -151,7 +194,7 @@ public class Recursion{
                 System.out.print("Key found at index: " + ind);
             }
         }
-        else if(a==7){
+        else if(a==8){
             System.out.print("How many elements do you want to add in the Array: ");
             int n= Sc.nextInt();
             int numbers[] = new int[n];
@@ -169,19 +212,28 @@ public class Recursion{
                 System.out.print("Key found at index: " + ind);
             }
         }
-        else if(a==8){
+        else if(a==9){
             System.out.print("Enter X: ");
             int x = Sc,nextInt();
             System.out.print("Enter n: ");
             int n = Sc.nextInt();
             System.out.print(pow(x,n));
         }
-        else if(a==8){
+        else if(a==10){
             System.out.print("Enter X: ");
-            int x = Sc,nextInt();
+            int x = Sc.nextInt();
             System.out.print("Enter n: ");
             int n = Sc.nextInt();
             System.out.print(optimizedPow(x,n));
+        }
+        else if(a==11){
+            System.out.print("Enter n: ");
+            int n = Sc.nextInt();
+            System.out.print(tilingWays(n));
+        }
+        else if(a==12){
+            String str = "kritika";
+            removeDuplicates(0,str,new StringBuilder(""),new boolean[26]);
         }
         else{
             System.out.print("Invalid Entry!!!");
