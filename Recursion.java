@@ -114,6 +114,28 @@ public class Recursion{
         }
     }
 
+    public static int friendsPairing(int n){
+        if(n==1||n==2){
+            return n;
+        }
+        int fnm1 = friendsPairing(n-1);
+        int fnm2 = friendsPairing(n-2);
+        int pairways = (n-1)*fnm2;
+        int totalWays = fnm1 + pairways;
+        return totalWays;
+    }
+
+    public static void printBinaryStrings(int n, int lastPlace, String str){
+        if(n == 0){
+            System.out.println(str);
+            return;
+        }
+        printBinaryStrings(n-1, 0, str+"0");
+        if(lastPlace == 0){
+            printBinaryStrings(n-1, 1, str+"1");
+        }
+    }
+
     public static void main(String args[]){
         Scanner Sc = new Scanner(System.in);
         System.out.print("1. Print numbers form 1 to n in increasing order\n");
@@ -129,6 +151,8 @@ public class Recursion{
         System.out.print("11. Tiling problem \n");
         System.out.print("12. Remove duplicates from a string \n");
         //for the string with no special characters or capital letters (we can easily make an extended version for that)
+        System.out.print("13. Friends pairing problem \n");
+        System.out.print("14. Pirnt all Binary strings of size n without consecutive 1s \n");
 
         System.out.print("Which function do you want to perform : ");
         int a = Sc.nextInt();
@@ -234,6 +258,16 @@ public class Recursion{
         else if(a==12){
             String str = "kritika";
             removeDuplicates(0,str,new StringBuilder(""),new boolean[26]);
+        }
+        else if(a==13){
+            System.out.print("Enter the number of friends : ");
+            int n = Sc.nextInt();
+            System.out.print("Thhe total number of ways in which they can pair is: " + friendsPairing(n));
+        }
+        else if(a==14){
+            System.out.print("Enter the size of the string (n): ");
+            int n = Sc.nextInt();
+            printBinaryStrings(n, 0, "");
         }
         else{
             System.out.print("Invalid Entry!!!");
