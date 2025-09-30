@@ -97,12 +97,8 @@ public class strings{
         }
         return count;
     }
-
-    public static boolean isAnagrams(String str1, String str2){
-        
-    }
-
-    public static void main(String args[]){
+    
+        public static void main(String args[]){
         Scanner Sc = new Scanner(System.in);
         System.out.println("Choose function to perform");
         System.out.println("1. Pelindrome or not");

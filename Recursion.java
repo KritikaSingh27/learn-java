@@ -136,6 +136,26 @@ public class Recursion{
         }
     }
 
+    public static void occurenceIdx(int arr[], int key, int idx){
+        if(idx == arr.length){
+            return;
+        }
+        if(arr[idx] == key){
+            System.out.print(idx + " ");
+        }
+        occurenceIdx(arr, key, idx + 1);
+    }
+
+    static String digits[] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+    public static void printDigits(int number){
+        if(number == 0){
+            return;
+        }
+        int lastDigit = number%10;
+        printDigits(number/10);
+        System.out.print(digits[lastDigit] + " ");
+    }
+
     public static void main(String args[]){
         Scanner Sc = new Scanner(System.in);
         System.out.print("1. Print numbers form 1 to n in increasing order\n");
@@ -153,6 +173,11 @@ public class Recursion{
         //for the string with no special characters or capital letters (we can easily make an extended version for that)
         System.out.print("13. Friends pairing problem \n");
         System.out.print("14. Pirnt all Binary strings of size n without consecutive 1s \n");
+        System.out.print("15. print all the indices of the arr on which the given key occurs \n");
+        System.out.print("16. Print number into digits in string form \n");
+        System.out.print("17. find the length of a string using Recursion \n");
+        System.out.print("18. Find all substrings of a string which starts and ends with same letter \n");
+        System.out.print("19. Tower of Hanoi \n");
 
         System.out.print("Which function do you want to perform : ");
         int a = Sc.nextInt();
@@ -268,6 +293,23 @@ public class Recursion{
             System.out.print("Enter the size of the string (n): ");
             int n = Sc.nextInt();
             printBinaryStrings(n, 0, "");
+        }
+        else if(a==15){
+            System.out.print("How many elements do you want to add in the Array: ");
+            int n= Sc.nextInt();
+            int numbers[] = new int[n];
+            for(int i=0; i<=n-1; i++){
+                System.out.print("Enter number: ");
+                numbers[i]= Sc.nextInt();
+            }
+            System.out.print("Enter key :");
+            int key = Sc.nextInt();
+            occurenceIdx(numbers,key,0);
+        }
+        else if(a==16){
+            System.out.print("Enter a number: ");
+            int num = Sc.nextInt();
+            printDigits(num);
         }
         else{
             System.out.print("Invalid Entry!!!");
