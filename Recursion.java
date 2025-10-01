@@ -156,6 +156,38 @@ public class Recursion{
         System.out.print(digits[lastDigit] + " ");
     }
 
+    public static int findLength(String str){
+        if(str == ""){
+            return 0;
+        }
+        return (1 + findLength(str.substring(1)));
+    }
+
+    public static int countSubstr(String str, int i, int j){
+        if(i>j){
+            return 0;
+        }
+        if(i==j){
+            return 1;
+        }
+        int count = 0;
+        count = countSubstr(str, i+1, j) + countSubstr(str, i, j-1) - countSubstr(str, i+1, j-1);
+        if(str.charAt(i) == str.charAt(j)){
+            count++;
+        }
+        return count;
+    }
+
+    public static void towerOfHanoi(int n, String source, String helper, String dest){
+        if(n == 1){
+            System.out.println("Transfer disk " + n + " from " + source + " to " + dest);
+            return;
+        }
+        towerOfHanoi(n-1, source, dest, helper);
+        System.out.println("Transfer disk " + n + " from " + source + " to " + dest);
+        towerOfHanoi(n-1, helper , source , dest);
+    }
+
     public static void main(String args[]){
         Scanner Sc = new Scanner(System.in);
         System.out.print("1. Print numbers form 1 to n in increasing order\n");
@@ -310,6 +342,21 @@ public class Recursion{
             System.out.print("Enter a number: ");
             int num = Sc.nextInt();
             printDigits(num);
+        }
+        else if(a==17){
+            String str = "kritika";
+            int length = findLength(str);
+            System.out.print(length);
+        }
+        else if(a==18){
+            String str = "kritika";
+            int count = countSubstr(str, 0, str.length()-1);
+            System.out.print(count);
+        }
+        else if(a==19){
+            System.out.print("Enter the number of disks(n): ");
+            int n = Sc.nextInt();
+            towerOfHanoi(n, "A", "B", "C");
         }
         else{
             System.out.print("Invalid Entry!!!");
