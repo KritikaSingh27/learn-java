@@ -219,6 +219,51 @@ public class DivideConquer {
         return majorityElementRec(nums, 0, nums.length-1);
     }
 
+    public static int invMerge( int arr[], int si,int mid, int ei){
+        int temp[] = new int[ei-si+1];
+        int i = si;
+        int j = mid+1;
+        int k = 0;
+        int invCount = 0;
+
+        while(i<= mid && j<=ei){
+            if(arr[i] <= arr[j]){
+                temp[k] = arr[i];
+                i++;
+            }else{
+                temp[k] = arr[j];
+                j++;
+                invCount += (mid - i + 1);
+            }
+            k++;
+        }
+
+        while(i<=mid){
+            temp[k++] = arr[i++];
+        }
+        while(j<=ei){
+            temp[k++] = arr[j++];
+        }
+
+        for(i=si, k=0; k<temp.length; k++,i++){
+            arr[i] = temp[k];
+        }
+        return invCount;
+    }
+    public static int countInv(int arr[], int si, int ei){
+        if(si<ei){
+            int mid = si + (ei-si)/2;
+            
+            int leftInvCount = countInv(arr, si, mid);
+            int rightInvCount = countInv(arr, mid+1, ei);
+            int mergeInvCount = invMerge(arr, si, mid, ei);
+
+            int invCount = leftInvCount + rightInvCount + mergeInvCount;
+            return invCount;
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         Scanner Sc = new Scanner(System.in);
         System.err.println("---------- Divide and Conquer ----------");
@@ -227,6 +272,7 @@ public class DivideConquer {
         System.out.println("3. Search in a Sorted and rotated array (variation of Binary search)");
         System.out.println("4. Merge sort for an array of Strings");
         System.out.println("5. Find the majority element of an array");
+        System.out.println("6. Find the inversion count in the array");
         System.out.print("Enter what you want to perform: ");
         int a = Sc.nextInt();
 
@@ -290,6 +336,11 @@ public class DivideConquer {
                 int nums[] = readArray(Sc);
                 int result = majorityElement(nums);
                 System.out.println("The majority element in the given array is: " + result);
+
+            case 6:
+                int array[] = readArray(Sc);
+                int invCount = countInv(array, 0, array.length-1);
+                System.out.println("The Inversion count of the given array is: " + invCount);
 
             default:
                 break;
