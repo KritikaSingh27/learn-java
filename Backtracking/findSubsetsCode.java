@@ -1,11 +1,11 @@
 package Backtracking;
 
-public class findSubsets {
+public class findSubsetsCode{
     public static void findSubsets(String str, String ans, int i){
         //base case
         if(i == str.length()){
             if(str == ""){
-                System.out.println("null");
+                System.out.println("Null");
             }
             else{
                 System.out.println(ans);
