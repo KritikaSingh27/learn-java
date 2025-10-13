@@ -1,6 +1,7 @@
-package Backtracking;
+import java.util.*;
 
-public class findSubsetsCode{
+public class Backtracking {
+
     public static void findSubsets(String str, String ans, int i){
         //base case
         if(i == str.length()){
@@ -19,8 +20,17 @@ public class findSubsetsCode{
     }
 
     public static void main(String[] args) {
-        String str = "abc";
-        String ans = "";
-        findSubsets(str, ans, 0);
+        Scanner Sc = new Scanner(System.in);
+        
+        System.out.println("1. Find all the subsets of a string");
+        System.out.print("Which function do you want to perform: ");
+        int a = Sc.nextInt();
+
+        if(a == 1){
+            String str = "abc";
+            String ans = "";
+            findSubsets(str, ans, 0);
+        }
+        
     }
 }
