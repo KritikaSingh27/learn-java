@@ -30,7 +30,7 @@ public class BitManipulation{
         return (n & bitmask);
     }
 
-    public static int UpdateIthBit(int n, int i, int newBit){
+    public static int UpdateIthBit1(int n, int i, int newBit){
         if(newBit == 0){
             return ClearIthBit(n,i);
         }
@@ -39,7 +39,7 @@ public class BitManipulation{
         }
     }
 
-    public static int UpdateIthBit(int n, int i, int newBit){
+    public static int UpdateIthBit2(int n, int i, int newBit){
         n = ClearIthBit(n,i);
         int bitmask = newBit<<i;
         return n|bitmask ;
@@ -47,10 +47,10 @@ public class BitManipulation{
 
     public static int ClearIBits(int n, int i){
         int bitmask = (~0)<<i;
-        (return n & bitmask);
+        return (n & bitmask);
     }
 
-    public static ClearRange(int n, int i, int j){
+    public static int ClearRange(int n, int i, int j){
         int a = ((~0)<<(j+1));
         int b = ((1<<i)-1);
         int bitmask = a|b;
