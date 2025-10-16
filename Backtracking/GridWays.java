@@ -1,5 +1,3 @@
-package Backtracking;
-
 //find the number of ways to reach from (i,j) to (n-1,m-1) in a N x M matrix 
 //Allowed moves - Right or down
 

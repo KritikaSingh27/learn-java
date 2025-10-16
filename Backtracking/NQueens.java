@@ -1,5 +1,3 @@
-package Backtracking;
-
 public class NQueens {
     //cheking if the place is safe to place the queen
     public static boolean isSafe(char board[][], int row, int col){
