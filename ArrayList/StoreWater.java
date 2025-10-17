@@ -1,6 +1,7 @@
+package ArrayList;
 import java.util.ArrayList;
 
-public class Arraylists {
+public class StoreWater{
     public static int storeWater(ArrayList<Integer> height){ //to calculate which is the largest container that can be formed
         int maxWater = 0;
         int lp = 0;
