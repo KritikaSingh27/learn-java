@@ -158,6 +158,46 @@ public class Linkedlist {
         return helper(key,head);
     }
 
+    public void reverse(){
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head = prev;
+    }
+
+    public void deleteNthFromEnd(int n){
+        //calculate size of ll
+        int sz = 0;
+        Node temp = head;
+        while(temp != null){
+            temp = temp.next;
+            sz++;
+        }
+        //when index is on head
+        if(n == sz){
+            head = head.next;
+            return;
+        }
+        //else
+        int i=1;
+        int iToFind = sz-n;
+        Node prev = head;
+        while(i < iToFind){
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return;
+    }
+
     public static void main(String[] args) {
         Linkedlist ll = new Linkedlist();
         ll.addFirst(2);
@@ -188,5 +228,10 @@ public class Linkedlist {
             System.out.println("key is found at index: " + i);
         }
         
+        ll.reverse();
+        ll.print();
+
+        ll.deleteNthFromEnd(2);
+        ll.print();
     }
 }
