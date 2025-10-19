@@ -122,6 +122,42 @@ public class Linkedlist {
         return val;
     }
 
+    public int itrSearch(int key){
+        Node temp = head;
+        int i = 0;
+
+        while(temp !=null){
+            if(temp.data == key){ //key found
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        return -1; //if not found
+    }
+
+    public int helper(int key, Node head){
+        //if ll is empty
+        if(head == null){
+            return -1;
+        }
+        // if key is found at head
+        if(head.data == key){
+            return 0;
+        }
+
+        int idx = helper(key, head.next);
+        //if key is not found
+        if(idx == -1){
+            return -1;
+        }
+        //key is found
+        return idx+1;
+    }
+    public int recSearch(int key){
+        return helper(key,head);
+    }
+
     public static void main(String[] args) {
         Linkedlist ll = new Linkedlist();
         ll.addFirst(2);
@@ -135,5 +171,22 @@ public class Linkedlist {
         System.out.println(ll.removeLast() + " is removed from last");
         ll.print();
         System.out.println("Size of the linkedlist: " + ll.size);
+
+        int idx = ll.itrSearch(10);
+        if(idx == -1){
+            System.out.println("Key not found");
+        }
+        else{
+            System.out.println("key is found at index: " + idx);
+        }
+
+        int i = ll.recSearch(3);
+        if(i == -1){
+            System.out.println("Key not found");
+        }
+        else{
+            System.out.println("key is found at index: " + i);
+        }
+        
     }
 }
