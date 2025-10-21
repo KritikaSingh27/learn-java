@@ -32,7 +32,7 @@ public class CircularLL {
         return false;
     }
 
-    public static void removeCycle(){
+    public void removeCycle(){
         // detect cycle - Floyd's cycle finding algorithm
         Node slow = head;
         Node fast = head;
@@ -53,16 +53,27 @@ public class CircularLL {
 
         //find meeting point
         slow = head;
+        Node prev = null;   //last node
+        while(slow != fast){
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // remove cycle
+        prev.next = null;
         
     }
 
     public static void main(String[] args) {
         CircularLL cll = new CircularLL();
         head = new Node(1);
-        head.next = new Node(2);
-        head.next.next = new Node(1);
-        head.next.next.next = new Node(2);
-        head.next.next.next.next = null;
+        Node temp = new Node(2);
+        head.next = temp;
+        head.next.next = new Node(3);
+        head.next.next.next = temp;
+        System.out.println(cll.isCycle());
+        cll.removeCycle();
         System.out.println(cll.isCycle());
     }
 }
