@@ -310,39 +310,39 @@ public class Linkedlist {
         ll.addLast(4);
         ll.add(8,2);
         ll.print();
-        System.out.println(ll.removeFirst() + " is removed from first");
-        ll.print();
-        System.out.println(ll.removeLast() + " is removed from last");
-        ll.print();
-        System.out.println("Size of the linkedlist: " + ll.size);
+        // System.out.println(ll.removeFirst() + " is removed from first");
+        // ll.print();
+        // System.out.println(ll.removeLast() + " is removed from last");
+        // ll.print();
+        // System.out.println("Size of the linkedlist: " + ll.size);
 
-        int idx = ll.itrSearch(10);
-        if(idx == -1){
-            System.out.println("Key not found");
-        }
-        else{
-            System.out.println("key is found at index: " + idx);
-        }
+        // int idx = ll.itrSearch(10);
+        // if(idx == -1){
+        //     System.out.println("Key not found");
+        // }
+        // else{
+        //     System.out.println("key is found at index: " + idx);
+        // }
 
-        int i = ll.recSearch(3);
-        if(i == -1){
-            System.out.println("Key not found");
-        }
-        else{
-            System.out.println("key is found at index: " + i);
-        }
+        // int i = ll.recSearch(3);
+        // if(i == -1){
+        //     System.out.println("Key not found");
+        // }
+        // else{
+        //     System.out.println("key is found at index: " + i);
+        // }
         
-        ll.reverse();
-        ll.print();
+        // ll.reverse();
+        // ll.print();
 
-        ll.deleteNthFromEnd(2);
-        ll.print();
+        // ll.deleteNthFromEnd(2);
+        // ll.print();
 
-        ll.addFirst(2);
-        ll.print();
-        System.out.println(ll.checkPalindrome());
+        // ll.addFirst(2);
+        // ll.print();
+        // System.out.println(ll.checkPalindrome());
 
-        ll.head = ll.mergeSort(head);
+        ll.head = ll.mergeSort(ll.head);
         ll.print();
     }
 }
