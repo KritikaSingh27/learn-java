@@ -300,16 +300,54 @@ public class Linkedlist {
         return merge(newLeft, newRight);
     }
 
+    public void zigZag(){
+        //find mid
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node miNode = slow;
+
+        //reverse the 2nd half
+        Node prev = null;
+        Node curr = miNode.next;
+        miNode.next = null;
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node rightHead = prev;
+        Node leftHead = head;
+
+        //alternate merging of the two halves
+        Node nextLeft, nextRight;
+
+        while(leftHead != null && rightHead != null){
+            nextLeft = leftHead.next;
+            leftHead.next = rightHead;
+            nextRight = rightHead.next;
+            rightHead.next = nextLeft;;
+
+            rightHead = nextRight;
+            leftHead = nextLeft;
+        }
+    }
+
     public static void main(String[] args) {
         Linkedlist ll = new Linkedlist();
-        ll.addFirst(2);
-        ll.addFirst(1);
-        ll.addFirst(6);
-        ll.addLast(8);
-        ll.addLast(3);
-        ll.addLast(4);
-        ll.add(8,2);
-        ll.print();
+        // ll.addFirst(2);
+        // ll.addFirst(1);
+        // ll.addFirst(6);
+        // ll.addLast(8);
+        // ll.addLast(3);
+        // ll.addLast(4);
+        // ll.add(8,2);
+        // ll.print();
         // System.out.println(ll.removeFirst() + " is removed from first");
         // ll.print();
         // System.out.println(ll.removeLast() + " is removed from last");
@@ -341,8 +379,20 @@ public class Linkedlist {
         // ll.addFirst(2);
         // ll.print();
         // System.out.println(ll.checkPalindrome());
+        // ll.print();
 
-        ll.head = ll.mergeSort(ll.head);
+        // ll.head = ll.mergeSort(ll.head);
+        // ll.print();
+
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.addLast(6);
+
+        ll.print();
+        ll.zigZag();
         ll.print();
     }
 }
