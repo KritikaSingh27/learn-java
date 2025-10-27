@@ -97,6 +97,22 @@ public class DoublyLL {
         return val;
     }
 
+    public void reverse(){
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            curr.prev = next;
+            prev = curr;
+            curr = next;
+        }
+
+        head = prev;
+    }
+
     public static void main(String[] args) {
         DoublyLL dll = new DoublyLL();
         dll.addFirst(5);
@@ -109,6 +125,8 @@ public class DoublyLL {
         dll.print();
         System.out.println(dll.removeFirst() + " is removed from first");
         System.out.println(dll.removeLast() + " is removed from last");
+        dll.print();
+        dll.reverse();
         dll.print();
         System.out.println("Size of the LL is: " + size);
     }
