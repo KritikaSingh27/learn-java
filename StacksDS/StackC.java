@@ -16,6 +16,17 @@ public class StackC {
         s.push(top);
     }
 
+    //Reverse a stack
+    public static void reverseStack(Stack<Integer>s){
+        if(s.isEmpty()){
+            return;
+        }
+
+        int top = s.pop();
+        reverseStack(s);
+        pushAtBottom(top, s);
+    }
+
     //Reverse a string using a stack
     public static String reverseString(String str){
         Stack<Character> s = new Stack<>();
@@ -34,6 +45,13 @@ public class StackC {
         return result.toString();
     }
 
+    public static void printStack(Stack<Integer>s){
+        while(!s.isEmpty()){
+            System.out.println(s.peek());
+            s.pop();
+        }
+    }
+
     public static void main(String[] args) {
         Stack<Integer> s = new Stack<>();
 
@@ -43,10 +61,8 @@ public class StackC {
 
         pushAtBottom(4, s);
 
-        while(!s.isEmpty()){
-            System.out.println(s.peek());
-            s.pop();
-        }
+        reverseStack(s);
+        printStack(s);
 
         String str = "abc";
         System.out.println("The reversed string is : " + reverseString(str));
