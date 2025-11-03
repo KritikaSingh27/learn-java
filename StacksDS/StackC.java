@@ -67,6 +67,8 @@ public class StackC {
         }
     }
 
+
+
     public static void printStack(Stack<Integer>s){
         while(!s.isEmpty()){
             System.out.println(s.peek());
@@ -96,5 +98,31 @@ public class StackC {
         for(int i=0; i<span.length; i++){
             System.out.print(span[i] + " ");
         }
+
+        System.out.println();
+
+        int arr[] = {6,8,0,1,3};
+        Stack<Integer>s1 = new Stack<>();
+        int nextGreater[] = new int[arr.length];
+
+        for(int i = arr.length-1; i>=0; i--){
+            while(!s1.isEmpty() && arr[s1.peek()] <= arr[i]){
+                s1.pop();
+            }
+
+            if(s1.isEmpty()){
+                nextGreater[i] = -1;
+            }
+            else{
+                nextGreater[i] = arr[s1.peek()];
+            }
+
+            s1.push(i);
+        }
+
+        for(int i = 0; i< nextGreater.length; i++){
+            System.out.print(nextGreater[i] + " ");
+        }
+        
     }
 }
