@@ -98,6 +98,31 @@ public class StackC {
         }
     }
 
+    public static boolean isDuplicate(String str){
+        Stack<Character>s = new Stack<>();
+
+        for(int i = 0; i < str.length(); i++){
+            char ch = str.charAt(i);
+            if(ch == ')'){
+                int count = 0;
+                while (s.peek() != '(') {
+                    s.pop();
+                    count++;
+                }
+                if(count < 1){
+                    return true;
+                }
+                else{
+                    s.pop();
+                }
+            }
+            else{
+                s.push(ch);
+            }
+        }
+        return false;
+    }
+
     public static void printStack(Stack<Integer>s){
         while(!s.isEmpty()){
             System.out.println(s.peek());
@@ -158,5 +183,7 @@ public class StackC {
         String str1 = "(({})[]";
         System.out.println(isValid(str1));
         
+        String str2 = "((a + b))";
+        System.out.println(isDuplicate(str2));
     }
 }
