@@ -45,7 +45,6 @@ public class StackC {
         return result.toString();
     }
 
-
     public static void stockSpan(int stocks[], int span[]){
         Stack<Integer>s = new Stack<>();
         span[0] = 1;
@@ -146,6 +145,7 @@ public class StackC {
         String str = "abc";
         System.out.println("The reversed string is : " + reverseString(str));
 
+        // stocks span problem
         int stocks[] = {100,80,60,70,60,85,100};
         int span[] = new int[stocks.length];
         stockSpan(stocks, span);
@@ -156,6 +156,7 @@ public class StackC {
 
         System.out.println();
 
+        //next greater
         int arr[] = {6,8,0,1,3};
         Stack<Integer>s1 = new Stack<>();
         int nextGreater[] = new int[arr.length];
@@ -181,9 +182,11 @@ public class StackC {
 
         System.out.println();
         
+        //is valid
         String str1 = "(({})[]";
         System.out.println(isValid(str1));
         
+        //is duplicate
         String str2 = "((a + b))";
         System.out.println(isDuplicate(str2));
     }
